@@ -1,0 +1,7 @@
+bin
+nbproject
+.classpath
+.idea
+.project
+.settings
+*.swp
