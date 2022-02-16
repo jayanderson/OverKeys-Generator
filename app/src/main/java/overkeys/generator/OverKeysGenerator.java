@@ -1,6 +1,6 @@
 package overkeys.generator;
 
-import gui.GUIController;
+import overkeys.gui.GUIController;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,7 +44,7 @@ public class OverKeysGenerator {
     public boolean setConstantsFromConfig() {
 
         Map<String,Double> values=new HashMap<>();
-        try (Scanner sc = new Scanner(new File("./resources/config.txt"))) {
+        try (Scanner sc = new Scanner(new File("." + File.separator + "config.txt"))) {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 String[] properties = line.split(GUIController.SEPARATOR, -1);
@@ -242,7 +242,7 @@ public class OverKeysGenerator {
     public void generateFiles() {
         int currentPianoKey, currentGenerator;
 
-        File together = new File(this.renderPath+"\\together.scad");//together is the big collection of keys and keytops that will show if everything worked correctly
+        File together = new File(this.renderPath + File.separator + "together.scad");//together is the big collection of keys and keytops that will show if everything worked correctly
         together.getParentFile().mkdirs();
         try {
             togetherPrint = new PrintWriter(together, "UTF-8");
@@ -252,7 +252,7 @@ public class OverKeysGenerator {
         togetherPrint.println("include<values.scad>;");
 
 
-        File values = new File(this.renderPath+"\\values.scad");
+        File values = new File(this.renderPath + File.separator + "values.scad");
         values.getParentFile().mkdirs();
         try {
             pwValues = new PrintWriter(values, "UTF-8");
@@ -271,7 +271,7 @@ public class OverKeysGenerator {
             int keytopsNeeded = (desiredGamut - currentGenerator - 1) / periodSteps + 1;//-1 then plus one because if desiredGamut-currentGenerator)=periodSteps, I want it to return 1?
 
             try {
-                File file2 = new File(this.renderPath+"\\" + i + "_" + currentGenerator+ ".scad");
+                File file2 = new File(this.renderPath + File.separator + i + "_" + currentGenerator+ ".scad");
                 file2.getParentFile().mkdirs();
                 pw = new PrintWriter(file2, "UTF-8");
 
@@ -633,7 +633,7 @@ public class OverKeysGenerator {
 
     public void createKeytop() {
         try {
-            File file = new File(renderPath+"\\keytop.scad");
+            File file = new File(renderPath + File.separator + "keytop.scad");
             file.getParentFile().mkdirs();
             pwKeyTop = new PrintWriter(file, "UTF-8");
 

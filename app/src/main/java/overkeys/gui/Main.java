@@ -1,4 +1,4 @@
-package gui;
+package overkeys.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class Main extends Application {
         stage.setTitle("OverKeys Generator");
         stage.setScene(scene);
 
-        fxmlLoader.<GUIController>getController().loadScreenData(new File("./resources/config.txt"));
+        fxmlLoader.<GUIController>getController().loadScreenData(new File("./config.txt"));
         stage.show();
     }
 

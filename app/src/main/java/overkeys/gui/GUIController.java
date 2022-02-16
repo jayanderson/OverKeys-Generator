@@ -1,4 +1,4 @@
-package gui;
+package overkeys.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -156,7 +156,7 @@ public class GUIController implements Initializable {
             }
         }
         try {
-            Files.copy(file.toPath(), (new File("./resources/config.txt").toPath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(file.toPath(), (new File("." + File.separator + "config.txt").toPath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -247,7 +247,7 @@ public class GUIController implements Initializable {
             for (String key : intValues.keySet())
                 writer.println(key + SEPARATOR + intValues.get(key));
             writer.close();
-            Files.copy(file.toPath(), (new File("./resources/config.txt").toPath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(file.toPath(), (new File("." + File.separator + "config.txt").toPath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -257,7 +257,7 @@ public class GUIController implements Initializable {
     private void saveToConfig(Map<String, Double> doubleValues, Map<String, Integer> intValues) {
         try {
             PrintWriter writer;
-            writer = new PrintWriter(new File("./resources/config.txt"));
+            writer = new PrintWriter(new File("." + File.separator + "config.txt"));
             for (String key : doubleValues.keySet())
                 writer.println(key + SEPARATOR + doubleValues.get(key));
             for (String key : intValues.keySet())
